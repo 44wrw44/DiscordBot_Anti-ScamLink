@@ -10,10 +10,20 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 
 CHANNEL_IDS = [123456789012345678, 234567890123456789]
 
+EXEMPT_DOMAINS = ["example.com", "trustedsite.org"]
+
 client = vt.Client('YOUR_VIRUSTOTAL_API_KEY')
 
 
 def is_scam_link(url):
+    domain_pattern = r"https?://(?:www\.)?([^/]+)"
+    domain_match = re.match(domain_pattern, url)
+
+    if domain_match:
+        domain = domain_match.group(1)
+        if domain in EXEMPT_DOMAINS:
+            return False
+
     try:
         analysis = client.scan_url(url)
         report = client.get_object(f"/urls/{analysis.scan_id}")
