@@ -1,2 +1,13 @@
 # DiscordBot_Anti-ScamLink
-Просто дискорд бот на Py для SpeakWorld
+Дискорд бот на python для проверки ссылок в сообщения.
+
+## Инструкция:
+1. Установите id каналов, в которых будет вестись проверка. (**CHANNEL_IDS**) 
+2. Установите ключ [VirusTotal](https://www.virustotal.com/gui/user/). (**YOUR_VIRUSTOTAL_API_KEY**)
+3. Установите [токен бота](https://discord.com/developers/applications). (**YOUR_BOT_TOKEN**)
+4. Установите разрешённые ссылки, точнее домен, так как он проверяет домен, но не что потом. (**EXEMPT_DOMAINS**)
+
+## Зависимости:
+1. discord - Взаимодействие с дискордом.
+2. vt - API VirusTotal.
+3. re - обычные выражения.
